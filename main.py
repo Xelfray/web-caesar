@@ -5,7 +5,7 @@ app=Flask(__name__)
 app.config['DEBUG']=True
 
 form="""
-<!DOCTYPE <html>
+<!DOCTYPE html>
 
 <html>
     <head>
@@ -31,7 +31,7 @@ form="""
             <label>Rotate by:
                 <input type="text" name="rot" value='0' />
             </label></br>
-            <textarea  name='text' value="{0}"></textarea>
+            <textarea  name='text' value='{0}'></textarea>
             <input type="submit" />
         </form>
     </body>
@@ -48,8 +48,10 @@ def encrypt():
     
     rot= int(request.form['rot'])
     text= request.form['text']
+    encrypted_text=rotate_string(text, rot)
     
-    return rotate_string(text,rot)
+    return (form.format(encrypted_text))
+    #return encrypted_text
     
 
 
